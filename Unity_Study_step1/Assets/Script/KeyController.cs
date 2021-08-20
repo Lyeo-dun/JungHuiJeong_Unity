@@ -100,6 +100,7 @@ public class KeyController : MonoBehaviour
 
                     StepPosition = TargetPoint - transform.position;
                     StepPosition.Normalize();
+                    StepPosition.y = 0;//현재 이 방법은 평면이라서 가능한 것
                 }
             }
 
