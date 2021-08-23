@@ -53,9 +53,11 @@
     <UnityVersion>2020.3.16f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\MoveControler.cs" />
-    <Compile Include="Assets\Script\RigidBodyMoveController.cs" />
-    <Compile Include="Assets\Script\KeyController.cs" />
+    <Compile Include="Assets\Script\MoveCollision\MoveControler.cs" />
+    <Compile Include="Assets\Script\MoveCollision\RigidBodyMoveController.cs" />
+    <Compile Include="Assets\Script\MoveCollision\KeyController.cs" />
+    <Compile Include="Assets\Script\MoveCollision\TargetPoint.cs" />
+    <Compile Include="Assets\Script\CollisionExercise\SphereMove.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
