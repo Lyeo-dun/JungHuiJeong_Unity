@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/CollisionExercise.unity
+- path: Assets/Scenes/Singleton.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

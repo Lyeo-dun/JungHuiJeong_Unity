@@ -53,15 +53,16 @@
     <UnityVersion>2020.3.16f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\InputRotation\InputRotate.cs" />
     <Compile Include="Assets\Scripts\MoveCollision\MoveControler.cs" />
     <Compile Include="Assets\Scripts\CollisionExercise\SphereMove.cs" />
-    <Compile Include="Assets\Scripts\MoveCollision\RigidBodyMoveController.cs" />
-    <Compile Include="Assets\Scripts\MoveCollision\TargetPoint.cs" />
-    <Compile Include="Assets\Scripts\MoveCollision\KeyController.cs" />
-    <Compile Include="Assets\Scripts\RotationExercise\EarthRotation.cs" />
     <Compile Include="Assets\Scripts\RotationExercise\MoonRotate.cs" />
+    <Compile Include="Assets\Scripts\MoveCollision\RigidBodyMoveController.cs" />
+    <Compile Include="Assets\Scripts\RotationExercise\EarthRotation.cs" />
+    <Compile Include="Assets\Scripts\MoveCollision\TargetPoint.cs" />
     <Compile Include="Assets\Scripts\RotationExercise\SunRotate.cs" />
-    <Compile Include="Assets\Scripts\InputRotation\InputRotate.cs" />
+    <Compile Include="Assets\Scripts\MoveCollision\KeyController.cs" />
+    <Compile Include="Assets\Scripts\Singleton\ObjectManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -12,7 +12,7 @@ public class KeyController : MonoBehaviour
     [SerializeField]private GameObject TargetPoint;
 
     private bool isMove;
-    private Vector3 StepPosition;
+    [SerializeField]private Vector3 StepPosition;
 
     [Header("Rigidbody")]
     [SerializeField] private Rigidbody Rigid;
@@ -104,7 +104,6 @@ public class KeyController : MonoBehaviour
                 //transform.position = new Vector3(hit.point.x, 2.0f, hit.point.z); //확인용, 이 방식으로는 쓰지 말 것!
 
                 Vector3 TmpPos = hit.point;
-                TmpPos.y = 2.0f;
                 TargetPoint.transform.position = TmpPos;
 
                 isMove = true;
@@ -118,5 +117,8 @@ public class KeyController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         isMove = false;
+
+        if (other.tag == "Enemy")
+            Destroy(other.gameObject);
     }
 }
