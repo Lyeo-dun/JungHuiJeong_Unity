@@ -8,6 +8,7 @@ public class ObjectManager : MonoBehaviour
 
     public static ObjectManager GetInstance
     {
+        //반환
         get
         {
             if (Instance == null)
@@ -15,17 +16,23 @@ public class ObjectManager : MonoBehaviour
 
             return Instance;
         }
-    }
+    }//Property
 
-    private ObjectManager() { }
+    private ObjectManager() { } //외부 생성을 허용하지 않음(싱글톤이기 때문에)
 
-    [SerializeField]private GameObject EnemyPrefab;
+    private GameObject EnemyPrefab;
     private List<GameObject> EnemyList = new List<GameObject>();
 
+    private void Awake()
+    {
+        GameObject ViewObject = new GameObject("EnemyList");
+        EnemyPrefab = Resources.Load("Prefabs/Enemy") as GameObject;
+    }
     private void Start()
     {
         for(int i = 0; i < 5; ++i)
         {
+            //오브젝트 복제
             GameObject obj = Instantiate(EnemyPrefab);
             obj.transform.parent = GameObject.Find("EnemyList").transform;
 
