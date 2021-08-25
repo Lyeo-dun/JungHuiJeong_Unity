@@ -51,7 +51,7 @@ public class KeyController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (ObjectManager.GetInstance.GetDisableList.Count <= 0)
-                ObjectManager.GetInstance.GetDisableList.Push(Instantiate(EnemyPrefab));
+                ObjectManager.GetInstance.AddObject(Instantiate(EnemyPrefab));
 
             GameObject Obj = ObjectManager.GetInstance.GetDisableList.Pop();
 
@@ -59,7 +59,6 @@ public class KeyController : MonoBehaviour
             Obj.transform.parent = GameObject.Find("EnableList").transform;
 
             ObjectManager.GetInstance.GetEnableList.Add(Obj);
-            Debug.Log("Enter");
         }
     }
     // Update is called once per frame
