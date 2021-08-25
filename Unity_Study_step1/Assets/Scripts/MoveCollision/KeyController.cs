@@ -5,42 +5,65 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class KeyController : MonoBehaviour
 {
-    [Header("Move Speed")]
     [SerializeField] private float Speed;
-    
-    [Header("Target")]    
-    [SerializeField]private GameObject TargetPoint;
 
+    private GameObject TargetPoint;
+ 
     private bool isMove;
-    [SerializeField]private Vector3 StepPosition;
 
-    [Header("Rigidbody")]
-    [SerializeField] private Rigidbody Rigid;
+    private Vector3 StepPosition;
+    private Rigidbody Rigid;
 
-
+    public GameObject EnemyPrefab;
 
     // Start is called before the first frame update
     private void Awake()
     {
         Rigid = GetComponent<Rigidbody>();
-
+        
         TargetPoint = GameObject.Find("TargetPoint");
+        EnemyPrefab = Resources.Load("Prefabs/Enemy") as GameObject;
+
     }//컴포넌트를 들고오는 용도
     
     void Start()
     {
         Rigid.useGravity = false;        
-        Speed = 20;
-
         //StepPosition = Vector3.zero;
+        TargetPoint.transform.position = transform.position;
+
         StepPosition = new Vector3(0.0f, 0.0f, 0.0f);
 
-        TargetPoint.transform.position = transform.position;
+        Speed = 0.5f;
         isMove = false;
+
+        new GameObject("EnableList");
+        new GameObject("DisableList");
+
+        for(int i = 0; i < 5; i++)
+        {
+            ObjectManager.GetInstance.AddObject(Instantiate(EnemyPrefab));
+        }
     } //setting 값을 설정할 때 사용하는 용도
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (ObjectManager.GetInstance.GetDisableList.Count <= 0)
+                ObjectManager.GetInstance.GetDisableList.Push(Instantiate(EnemyPrefab));
+
+            GameObject Obj = ObjectManager.GetInstance.GetDisableList.Pop();
+
+            Obj.gameObject.SetActive(true);
+            Obj.transform.parent = GameObject.Find("EnableList").transform;
+
+            ObjectManager.GetInstance.GetEnableList.Add(Obj);
+            Debug.Log("Enter");
+        }
+    }
     // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         ////키보드 입력에 대한 이동
         //float fHor = Input.GetAxis("Horizontal");
@@ -48,19 +71,16 @@ public class KeyController : MonoBehaviour
 
         //transform.Translate(fHor * Speed * Time.deltaTime, 0.0f, fVer * Speed * Time.deltaTime);
 
-
         /*
          //마우스 입력
         if(Input.GetMouseButtonDown(0))
         {
             Debug.Log("좌클릭");
         }
-
         if (Input.GetMouseButtonDown(1))
         {
             Debug.Log("우클릭");
         }
-
         if (Input.GetMouseButtonDown(2))
         {
             Debug.Log("휠클릭");
@@ -84,8 +104,8 @@ public class KeyController : MonoBehaviour
 
         //움직이기
         if (isMove)
-            transform.position += StepPosition * Time.deltaTime * Speed; //방향 * 시간 * 속력 = 속도
-    
+            transform.position += StepPosition * Speed; //(방향 * 시간(FixedUpdate는 deltatime 필요 x) * 속력) + 현재 위치 = 도착 위치
+
     }
 
     void RayPoint(Ray _ray)
@@ -109,16 +129,23 @@ public class KeyController : MonoBehaviour
                 isMove = true;
 
                 StepPosition = TargetPoint.transform.position - transform.position;
-                StepPosition.Normalize();
+                StepPosition.Normalize();//방향만 남긴 벡터
                 StepPosition.y = 0;
             }
         }
     }
     private void OnTriggerEnter(Collider other)
     {
-        isMove = false;
+        if(other.tag == "TargetPoint")
+            isMove = false;
 
         if (other.tag == "Enemy")
-            Destroy(other.gameObject);
+        {
+            other.gameObject.SetActive(false);
+            other.gameObject.transform.parent = GameObject.Find("DisableList").transform;
+
+            ObjectManager.GetInstance.GetDisableList.Push(other.gameObject);
+            ObjectManager.GetInstance.GetEnableList.Remove(other.gameObject);
+        }
     }
 }
