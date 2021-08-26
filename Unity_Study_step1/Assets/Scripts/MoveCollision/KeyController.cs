@@ -41,9 +41,8 @@ public class KeyController : MonoBehaviour
         new GameObject("DisableList");
 
         for(int i = 0; i < 5; i++)
-        {
             ObjectManager.GetInstance.AddObject(Instantiate(EnemyPrefab));
-        }
+
     } //setting 값을 설정할 때 사용하는 용도
 
     private void Update()
@@ -51,13 +50,11 @@ public class KeyController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (ObjectManager.GetInstance.GetDisableList.Count <= 0)
-                ObjectManager.GetInstance.AddObject(Instantiate(EnemyPrefab));
+                for (int i = 0; i < 5; i++)
+                    ObjectManager.GetInstance.AddObject(Instantiate(EnemyPrefab));
 
             GameObject Obj = ObjectManager.GetInstance.GetDisableList.Pop();
-
             Obj.gameObject.SetActive(true);
-            Obj.transform.parent = GameObject.Find("EnableList").transform;
-
             ObjectManager.GetInstance.GetEnableList.Add(Obj);
         }
     }
@@ -140,11 +137,12 @@ public class KeyController : MonoBehaviour
 
         if (other.tag == "Enemy")
         {
-            other.gameObject.SetActive(false);
             other.gameObject.transform.parent = GameObject.Find("DisableList").transform;
 
             ObjectManager.GetInstance.GetDisableList.Push(other.gameObject);
             ObjectManager.GetInstance.GetEnableList.Remove(other.gameObject);
+            
+            other.gameObject.SetActive(false);
         }
     }
 }
