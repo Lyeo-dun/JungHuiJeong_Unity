@@ -39,6 +39,15 @@ public class ObjectManager
         } 
     }
 
+    public Stack<GameObject> BulletList = new Stack<GameObject>();
+    public Stack<GameObject> GetBulletList
+    {
+        get
+        {
+            return BulletList;
+        }
+    }
+
     public void AddObject(GameObject _Object)
     {
         if(!_Object.GetComponent<EnemyController>())
@@ -55,10 +64,26 @@ public class ObjectManager
         //z = -25 ~ 25
         //y = -1.0f
         
-        _Object.transform.position = new Vector3(0.0f, -0.5f, 0.0f);
-        
         _Object.gameObject.SetActive(false);
         //EnemyList.Add(obj);
         DisableList.Push(_Object);
+    }
+
+    public void AddBulletList(GameObject _Object)
+    {
+        //오브젝트 복제
+        _Object.transform.parent = GameObject.Find("BulletList").transform;
+
+        //효율이 좋지 않음 
+        //편리성보다는 현재는 Start에서 한번만 하는 것이기 때문에 실수한 것을 체크하는 개념에서 사용
+        _Object.GetComponent<BoxCollider>().isTrigger = true;
+
+        //x = -25 ~ 25
+        //z = -25 ~ 25
+        //y = -1.0f
+
+        _Object.gameObject.SetActive(false);
+        //EnemyList.Add(obj);
+        BulletList.Push(_Object);
     }
 }

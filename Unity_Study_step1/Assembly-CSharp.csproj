@@ -62,8 +62,9 @@
     <Compile Include="Assets\Scripts\Singleton\ObjectManager.cs" />
     <Compile Include="Assets\Scripts\MoveCollision\TargetPoint.cs" />
     <Compile Include="Assets\Scripts\RotationExercise\SunRotate.cs" />
-    <Compile Include="Assets\Scripts\MoveCollision\KeyController.cs" />
     <Compile Include="Assets\Scripts\Singleton\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\MoveCollision\KeyController.cs" />
+    <Compile Include="Assets\Scripts\Singleton\BulletController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
