@@ -15,7 +15,7 @@ public class KeyController : MonoBehaviour
     private Rigidbody Rigid;
 
     public GameObject EnemyPrefab;
-    private GameObject BulletPrefab;
+
 
     // Start is called before the first frame update
     private void Awake()
@@ -24,7 +24,7 @@ public class KeyController : MonoBehaviour
         
         TargetPoint = GameObject.Find("TargetPoint");
         EnemyPrefab = Resources.Load("Prefabs/Enemy") as GameObject;
-        BulletPrefab = Resources.Load("Prefabs/Bullet") as GameObject;
+
 
     }//컴포넌트를 들고오는 용도
     
@@ -41,13 +41,9 @@ public class KeyController : MonoBehaviour
 
         new GameObject("EnableList");
         new GameObject("DisableList");
-        new GameObject("BulletList");
 
         for(int i = 0; i < 5; i++)
             ObjectManager.GetInstance.AddObject(Instantiate(EnemyPrefab));
-
-        for (int i = 0; i < 32; i++)
-            ObjectManager.GetInstance.AddBulletList(Instantiate(BulletPrefab));
 
     } //setting 값을 설정할 때 사용하는 용도
 

@@ -9,16 +9,22 @@ public class BulletController : MonoBehaviour
 
     private void Awake()
     {
-        Rigid = GetComponent<Rigidbody>();
+        Rigid = GetComponent<Rigidbody>(); 
     }
     private void OnEnable()
     {
-        Rigid.AddForce(transform.forward * 500.0f);
+        
+        
     }
     // Start is called before the first frame update
     void Start()
     {
         Rigid.useGravity = false;
+
+        Collider CollObj = GetComponent<BoxCollider>();
+        CollObj.isTrigger = true;
+
+        Rigid.AddForce(transform.forward * 500.0f);
     }
 
     // Update is called once per frame
@@ -29,7 +35,10 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag != "Enemy")
-            gameObject.SetActive(false);
+        if (other.tag != "Enemy" && other.tag != "WayPoint")
+        {
+            Debug.Log(other.tag);
+            Destroy(this.gameObject);
+        }
     }
 }

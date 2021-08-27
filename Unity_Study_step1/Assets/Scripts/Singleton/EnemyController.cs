@@ -14,8 +14,9 @@ public class EnemyController : MonoBehaviour
 
     private Rigidbody Rigid;
 
-    private float idleTime;
-    private float BulletShootTime;
+    private bool BulletCheck;
+
+    private GameObject BulletPrefab;
 
     private void Awake()
     {
@@ -23,6 +24,8 @@ public class EnemyController : MonoBehaviour
 
         if (WayPoint == null)
             WayPoint = new GameObject("WayPoint");
+
+        BulletPrefab = Resources.Load("Prefabs/Bullet") as GameObject;
 
         WayPoint.tag = "WayPoint";
 
@@ -36,81 +39,76 @@ public class EnemyController : MonoBehaviour
 
     private void OnEnable()
     {
+        transform.position = new Vector3(Random.Range(-25, 25), -0.5f, Random.Range(-25, 25));
         Initialized();
     }
     private void Start()
     {
-        idleTime = 3.0f;
-
         Speed = 0.05f;
-
-        BulletShootTime = 1.0f;
 
         Rigid.useGravity = false;
 
-        Initialized();
-    }
+        BulletCheck = false;
 
+        transform.position = new Vector3(Random.Range(-25, 25), -0.5f, Random.Range(-25, 25));
+        Initialized();
+
+        StartCoroutine("BulletShoot");
+    }
+    private void Update()
+    {
+        if (BulletCheck)
+        {
+            GameObject Obj = Instantiate(BulletPrefab);
+
+            Obj.transform.position = transform.position;
+            Obj.transform.rotation = transform.rotation;
+
+            Obj.AddComponent<BulletController>();
+
+            BulletCheck = false;
+            StartCoroutine("BulletShoot");
+        }
+    }
     private void FixedUpdate()
     {
         if(isMove)
         {
             transform.position += StepPosition * Speed;
-            Debug.DrawLine(WayPoint.transform.position, transform.position);
-
-            BulletShootTime -= Time.deltaTime;
-            if (BulletShootTime < 0)
-            {
-                foreach (GameObject Object in ObjectManager.GetInstance.GetBulletList)
-                {
-                    if (!Object.activeSelf)
-                    {
-                        Object.transform.position = transform.position;
-
-                        Object.SetActive(true);
-
-                        BulletShootTime = 3.0f;
-                        break;
-                    }
-                }
-            }
+            Debug.DrawLine(WayPoint.transform.position, transform.position);            
         }
-        else
-        {
-            idleTime -= Time.deltaTime;
-            if(idleTime < 0)
-            {
-                WayPoint.transform.position = new Vector3(Random.Range(-25, 25), -0.5f, Random.Range(-25, 25));
-                isMove = true;
-
-                StepPosition = WayPoint.transform.position - transform.position;
-                StepPosition.Normalize();//방향만 남긴 벡터
-                StepPosition.y = 0;
-
-                //대기시간 세팅
-                idleTime = Random.Range(3, 5);
-            }
-        } 
     }
-
     private void Initialized()
     {
-        //Random.Range(min, max)
-        transform.position = new Vector3(Random.Range(-25, 25), -0.5f, Random.Range(-25, 25));
+        //Random.Range(min, max)       
         WayPoint.transform.position = new Vector3(Random.Range(-25, 25), -0.5f, Random.Range(-25, 25));
+        isMove = true;
 
         StepPosition = WayPoint.transform.position - transform.position;
         StepPosition.Normalize();//방향만 남긴 벡터
         StepPosition.y = 0;
 
-        isMove = true;
+        WayPoint.transform.position.Set(WayPoint.transform.position.x, transform.position.y, WayPoint.transform.position.z);
+        transform.LookAt(WayPoint.transform.position);
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "WayPoint")
         {
             isMove = false;
+            StartCoroutine("EnemyState");
         }
-    }   
+    }
+    IEnumerator BulletShoot()
+    {
+        yield return new WaitForSeconds(Random.Range(3, 5));
+        BulletCheck = true;
+    }
+
+
+    IEnumerator EnemyState()
+    {
+        yield return new WaitForSeconds(Random.Range(3, 5));
+        Initialized();
+    }
 }
