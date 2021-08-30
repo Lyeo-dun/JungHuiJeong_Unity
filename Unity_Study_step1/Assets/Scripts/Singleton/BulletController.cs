@@ -37,7 +37,6 @@ public class BulletController : MonoBehaviour
     {
         if (other.tag != "Enemy" && other.tag != "WayPoint")
         {
-            Debug.Log(other.tag);
             Destroy(this.gameObject);
         }
     }
