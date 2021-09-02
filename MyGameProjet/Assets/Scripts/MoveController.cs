@@ -71,6 +71,18 @@ public class MoveController : MonoBehaviour
 
         transform.Translate(Hor * Time.deltaTime * Speed, 0.0f, Ver * Time.deltaTime * Speed);
 
+        
+        // ** 현재 상태의 회전값
+        Vector3 CurrentRotation = this.transform.rotation.eulerAngles;
+
+        CurrentRotation.x += (Input.GetAxisRaw("Mouse Y") * -30);
+        CurrentRotation.y += (Input.GetAxisRaw("Mouse X") * 30);
+        CurrentRotation.z = 0;
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(CurrentRotation), Time.deltaTime * 5.0f);
+        
+        
+
         // ** 스페이스 키 입력을 받았을때 에너미 생성
         if (Input.GetKeyDown(KeyCode.Space))
         {

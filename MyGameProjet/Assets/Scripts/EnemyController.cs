@@ -48,6 +48,8 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+
+        transform.position = new Vector3(Random.Range(-25, 25), 0.0f, Random.Range(-25, 25));
         // ** 이동 속도 조절
         Speed = 0.02f;
 
@@ -60,6 +62,8 @@ public class EnemyController : MonoBehaviour
 
     private void OnEnable()
     {
+        transform.position = new Vector3(Random.Range(-25, 25), 0.0f, Random.Range(-25, 25));
+
         Initialize();
     }
 
@@ -82,10 +86,7 @@ public class EnemyController : MonoBehaviour
         // ** 현재 오브젝트를 EnableList의 하위 객체로
         this.transform.parent = GameObject.Find("EnableList").transform;
         // ** WayPoint 이동 목표위치 :  난수 함수 = Random.Range(Min, Max)
-        WayPoint.transform.position = new Vector3(
-            Random.Range(-25, 25),
-            0.0f,
-            Random.Range(-25, 25));
+        WayPoint.transform.position = new Vector3(Random.Range(-25, 25), 0.0f, Random.Range(-25, 25));
 
         //** 타겟이 생성되었으니 움직일수 있도록 true로 변경
         Move = true;
