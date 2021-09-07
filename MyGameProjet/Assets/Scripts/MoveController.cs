@@ -7,6 +7,9 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class MoveController : MonoBehaviour
 {
+    //바라보는 방향
+    private Vector3 Direction;
+
     // ** 이동 속도
     [SerializeField] private float Speed;
 
@@ -36,6 +39,9 @@ public class MoveController : MonoBehaviour
 
     void Start()
     {
+        // ** 바라보는 방향 초기값
+        Direction = Vector3.zero;
+
         // ** 물리엔진의 중력을 비활성화.
         Rigid.useGravity = false;
 
@@ -73,15 +79,14 @@ public class MoveController : MonoBehaviour
 
         
         // ** 현재 상태의 회전값
-        Vector3 CurrentRotation = this.transform.rotation.eulerAngles;
+        //Vector3 CurrentRotation = this.transform.rotation.eulerAngles;
 
-        CurrentRotation.x += (Input.GetAxisRaw("Mouse Y") * -30);
-        CurrentRotation.y += (Input.GetAxisRaw("Mouse X") * 30);
-        CurrentRotation.z = 0;
+        //CurrentRotation.x += (Input.GetAxisRaw("Mouse Y") * -30);
+        //CurrentRotation.y += (Input.GetAxisRaw("Mouse X") * 30);
+        //CurrentRotation.z = 0;
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(CurrentRotation), Time.deltaTime * 5.0f);
-        
-        
+        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(CurrentRotation), Time.deltaTime * 5.0f);
+                
 
         // ** 스페이스 키 입력을 받았을때 에너미 생성
         if (Input.GetKeyDown(KeyCode.Space))
@@ -103,6 +108,11 @@ public class MoveController : MonoBehaviour
         }
         // ** 비활성화 상태에서 활성화 상태로 변경하고, 변경된 오브젝트는 
         // ** 활성화된 오브젝트만 모여있는 리스트에서 사용이 끝날때까지 관리 된다.
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RayPoint(ray);
+
+        transform.rotation = Quaternion.LookRotation(Direction);
 
         if (Input.GetMouseButtonDown(0) && BulletCheck)
         {
@@ -144,6 +154,8 @@ public class MoveController : MonoBehaviour
             // ** 충돌된 객체가 Ground라면
             if (hit.transform.tag == "Ground")
             {
+                Direction = hit.point - transform.position;
+                Direction.Normalize();
             }
         }
     }

@@ -100,7 +100,7 @@ public class EnemyController : MonoBehaviour
         // ** 남은 방향에 Y값은 그 값조차 없애버림. 오작동 방지.
         Step.y = 0;
 
-        // ** 
+        // ** WayPoint 값 
         WayPoint.transform.position.Set(
                 WayPoint.transform.position.x,
                 0.0f, 

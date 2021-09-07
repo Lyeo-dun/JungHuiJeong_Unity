@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
     private bool isShakeCamera;
 
     // ** [Const]
-    private const float Minimum = 50.0f;
+    private const float Minimum = 40.0f;
     private const float Maximum = 65.0f;
 
     private void Awake()
@@ -34,10 +34,15 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
-        transform.parent = Target.transform;
+        //transform.parent = Target.transform;
 
         // ** Target 위치를 설정한다
         Offset = new Vector3(0.0f, 9.0f, -6.0f);
+        
+        //카메라의 위치를 지정된 장소로 셋팅
+        //transform.position = Offset + Target.transform.position;
+
+        transform.rotation = Quaternion.LookRotation((Target.transform.position - transform.position).normalized);
 
         ZoomDistance = 50.0f;
 
@@ -45,14 +50,13 @@ public class CameraController : MonoBehaviour
         ShakeTime = 0.03f;
 
         isShakeCamera = false;
+
     }
 
     void Update()
     {
         if(!isShakeCamera)
         {
-            // ** 해당 Offset 만큼의 거리에서 목표물 추적
-            this.transform.position = Target.transform.position + Offset;
 
             float MouseScroll = Input.GetAxisRaw("Mouse ScrollWheel");
 
@@ -72,8 +76,17 @@ public class CameraController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
             StartCoroutine("ShakeCamera");
 
+        FollowingCamera();
     }
 
+   void FollowingCamera()
+    {
+        // ** 카메라가 목표지점까지 이동하는 시간을 셋팅(시작점, 도착 지점, 시작점에서 도착지점까지 갈 때 어느 정도의 간격으로 갈 것인지)
+        Vector3 SmoothFollowingPosition = Vector3.Lerp(transform.position, Target.transform.position + Offset, Time.deltaTime * 5.0f);
+
+        // ** 위에서 셋팅된 위치를 반환
+        transform.position = SmoothFollowingPosition;
+    }
     IEnumerator ShakeCamera()
     {
         isShakeCamera = true;
@@ -82,11 +95,12 @@ public class CameraController : MonoBehaviour
 
         while (true)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.005f);
 
-            transform.position = Target.transform.position + Offset + 
-                Vector3.right * Random.Range(0.05f, 0.1f) +
-                Vector3.up * Random.Range(0.05f, 0.1f);
+            transform.position = transform.position + 
+                Vector3.right * Random.Range(-0.15f, 0.15f) +
+                Vector3.up * Random.Range(-0.15f, 0.15f) + 
+                Vector3.forward * Random.Range(-0.15f, 0.15f);
 
             ShakeTime -= Time.deltaTime;
             if (ShakeTime < 0) break;
@@ -95,7 +109,7 @@ public class CameraController : MonoBehaviour
         // ** 흔들리기 전 기존의 위치로 되돌림
         MainCamera.transform.position = OldPosition;
 
-        ShakeTime = 0.03f;
+        ShakeTime = 0.08f;
 
         isShakeCamera = false;
     }
