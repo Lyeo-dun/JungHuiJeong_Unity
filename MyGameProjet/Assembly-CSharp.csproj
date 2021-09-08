@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Assets\Resources\Effect\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
     <Compile Include="Assets\Scripts\FistController.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Resources\Effect\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\Scripts\MoveController.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
@@ -63,7 +64,9 @@
     <Compile Include="Assets\Scripts\ObjectManager.cs" />
     <Compile Include="Assets\Resources\Effect\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
     <Compile Include="Assets\Resources\Effect\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\UI\BottomQuickSlot.cs" />
+    <Compile Include="Assets\Scripts\UI\HitPointBar.cs" />
+    <Compile Include="Assets\Scripts\UI\EnemyHitPointBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Effect\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
