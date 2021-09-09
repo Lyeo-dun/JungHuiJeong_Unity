@@ -19,7 +19,7 @@ public class EnemyHitPointBar : MonoBehaviour
     private void Awake()
     {
         HitPointCanvasPrefabs = Resources.Load("Prefab/EnemyHitPointCanvas") as GameObject;
-        HitPointPrefabs = Resources.Load("Prefab/HitPointSlider") as GameObject; 
+        HitPointPrefabs = Resources.Load("Prefab/HitPointSlider") as GameObject;
         //프리팹을 따로 둔 이유는 자식 객체를 HitPointCanvas의 자식으로 둘 경우 자식 중 가져오고 싶은 게임 오브젝트를 어떻게 찾을지 생각이 나지 않았음
         //후에 배운다면 수정 요망
 
