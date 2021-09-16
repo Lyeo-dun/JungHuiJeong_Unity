@@ -24,6 +24,8 @@ public class MoveController : MonoBehaviour
     // ** 총알발사 확인
     private bool BulletCheck;
 
+    private Animator Anim;
+
 
     void Awake()
     {
@@ -35,6 +37,8 @@ public class MoveController : MonoBehaviour
         EnemyPrefab = Resources.Load("Prefab/EnemyPrefabs/TurtleShellPBR") as GameObject;
 
         BulletPrefab = Resources.Load("Prefab/Bullets/Bullet") as GameObject;
+
+        Anim = GetComponent<Animator>();
     }
 
     void Start()
@@ -72,12 +76,14 @@ public class MoveController : MonoBehaviour
 
     private void Update()
     {
+        // ** 키보드 이동
         float Hor = Input.GetAxisRaw("Horizontal");
         float Ver = Input.GetAxisRaw("Vertical");
 
         transform.Translate(Hor * Time.deltaTime * Speed, 0.0f, Ver * Time.deltaTime * Speed);
 
-        
+        Anim.SetFloat("Speed", Ver);
+
         // ** 현재 상태의 회전값
         //Vector3 CurrentRotation = this.transform.rotation.eulerAngles;
 
@@ -86,7 +92,7 @@ public class MoveController : MonoBehaviour
         //CurrentRotation.z = 0;
 
         //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(CurrentRotation), Time.deltaTime * 5.0f);
-                
+
 
         // ** 스페이스 키 입력을 받았을때 에너미 생성
         if (Input.GetKeyDown(KeyCode.Space))
@@ -109,11 +115,6 @@ public class MoveController : MonoBehaviour
         // ** 비활성화 상태에서 활성화 상태로 변경하고, 변경된 오브젝트는 
         // ** 활성화된 오브젝트만 모여있는 리스트에서 사용이 끝날때까지 관리 된다.
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RayPoint(ray);
-
-        transform.rotation = Quaternion.LookRotation(Direction);
-
         if (Input.GetMouseButtonDown(0) && BulletCheck)
         {
             // ** Obj 객체 복사
@@ -134,6 +135,12 @@ public class MoveController : MonoBehaviour
             // ** Fistall 코루틴 실행
             StartCoroutine("Fistall");
         }
+        
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RayPoint(ray);
+
+        transform.rotation = Quaternion.LookRotation(Direction);
+
     }
 
     private void FixedUpdate()

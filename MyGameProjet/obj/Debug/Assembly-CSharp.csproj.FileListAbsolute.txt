@@ -294,3 +294,7 @@ E:\dataDownload\Github\JungHuiJeong_Unity\MyGameProjet\obj\Debug\Assembly-CSharp
 E:\dataDownload\Github\JungHuiJeong_Unity\MyGameProjet\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 E:\dataDownload\Github\JungHuiJeong_Unity\MyGameProjet\obj\Debug\Assembly-CSharp.dll
 E:\dataDownload\Github\JungHuiJeong_Unity\MyGameProjet\obj\Debug\Assembly-CSharp.pdb
+E:\dataDownload\Github\JungHuiJeong_Unity\MyGameProjet\Temp\Bin\Debug\nunit.framework.dll
+E:\dataDownload\Github\JungHuiJeong_Unity\MyGameProjet\Temp\Bin\Debug\unityplastic.dll
+E:\dataDownload\Github\JungHuiJeong_Unity\MyGameProjet\Temp\Bin\Debug\Unity.Plastic.Antlr3.Runtime.dll
+E:\dataDownload\Github\JungHuiJeong_Unity\MyGameProjet\Temp\Bin\Debug\Mono.Posix.dll
