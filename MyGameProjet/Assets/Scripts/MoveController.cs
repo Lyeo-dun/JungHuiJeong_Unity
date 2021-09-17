@@ -82,7 +82,8 @@ public class MoveController : MonoBehaviour
 
         transform.Translate(Hor * Time.deltaTime * Speed, 0.0f, Ver * Time.deltaTime * Speed);
 
-        Anim.SetFloat("Speed", Ver);
+        //Anim.SetFloat("Speed", Ver);
+
 
         // ** 현재 상태의 회전값
         //Vector3 CurrentRotation = this.transform.rotation.eulerAngles;

@@ -21,7 +21,7 @@ public class BottomQuickSlot : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         if(ButtonDown)
         {
             PopupCheck = true;
-            StartCoroutine("Popup Update");
+            StartCoroutine("PopupUpdate");
         }
     }
 
