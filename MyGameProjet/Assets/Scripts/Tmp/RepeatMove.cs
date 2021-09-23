@@ -64,6 +64,15 @@ public class RepeatMove : MonoBehaviour
             PlaySound(Index);
         }
 
+        if(Ani.GetCurrentAnimatorStateInfo(0).IsName("BoxTmpAni0") && Ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
+        {
+            Ani.SetBool("Sound1", false);
+        }
+
+        if (Ani.GetCurrentAnimatorStateInfo(0).IsName("BoxAni2") && Ani.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.9f)
+        {
+            Ani.SetBool("Sound15", false);
+        }
     }
 
     public void PlaySound(int _Index, float _Volume = 1.0f, bool _Loop = false)
@@ -92,13 +101,7 @@ public class RepeatMove : MonoBehaviour
     }
 
     public void AudioPlay()
-    {        
+    {
         PlaySound(Index);
-
-        if(Ani.GetBool("Sound1"))
-            Ani.SetBool("Sound1", false);
-
-        if(Ani.GetBool("Sound15"))
-            Ani.SetBool("Sound15", false);
     }
 }
