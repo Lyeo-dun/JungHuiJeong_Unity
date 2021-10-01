@@ -8,6 +8,8 @@ TagManager:
   - Ground
   - Enemy
   - Obstacle
+  - Item
+  - TargetItem
   layers:
   - Default
   - TransparentFX

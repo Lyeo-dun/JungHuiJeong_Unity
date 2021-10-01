@@ -53,24 +53,30 @@
     <UnityVersion>2020.3.17f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Tmp\TestMove.cs" />
+    <Compile Include="Assets\Scripts\Repeat\TestMove.cs" />
     <Compile Include="Assets\Resources\Effect\Cartoon FX\Scripts\CFX_LightIntensityFade.cs" />
+    <Compile Include="Assets\Scripts\Tmp\TmpSound.cs" />
     <Compile Include="Assets\Scripts\FistController.cs" />
     <Compile Include="Assets\Scripts\UI\EnemyHitPointBar.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Resources\Effect\Cartoon FX\Scripts\CFX_AutoRotate.cs" />
-    <Compile Include="Assets\Scripts\Tmp\RepeatMove.cs" />
+    <Compile Include="Assets\Scripts\Repeat\RepeatMove.cs" />
+    <Compile Include="Assets\Free UI build package\Script\Slide.cs" />
     <Compile Include="Assets\Scripts\MoveController.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\Tmp\TmpPlayerHP.cs" />
+    <Compile Include="Assets\Scripts\Tmp\TmpMove.cs" />
     <Compile Include="Assets\Scripts\UI\BottomQuickSlot.cs" />
+    <Compile Include="Assets\Free UI build package\Script\Togglescript.cs" />
+    <Compile Include="Assets\Scripts\Repeat\UITmp.cs" />
     <Compile Include="Assets\Scripts\CarController.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\ObjectManager.cs" />
-    <Compile Include="Assets\Scripts\Tmp\NewBehaviourScript.cs" />
+    <Compile Include="Assets\Scripts\Repeat\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\UI\HitPointBar.cs" />
     <Compile Include="Assets\Resources\Effect\Cartoon FX\Scripts\CFX_LightFlicker.cs" />
     <Compile Include="Assets\Resources\Effect\Cartoon FX\Scripts\CFX_AutoDestructShuriken.cs" />
-    <Compile Include="Assets\Scripts\Tmp\UITmp.cs" />
+    <Compile Include="Assets\Scripts\TestScene\TestSceneMove.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\Effect\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
