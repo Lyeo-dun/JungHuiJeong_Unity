@@ -5,30 +5,30 @@ using UnityEngine.AI;
 
 public class TestMove : MonoBehaviour
 {
-    //private Animator Anim;
-    //private bool isRun;
+    private Animator Anim;
+    private bool isRun;
 
     private Vector3 Direction;
     private NavMeshAgent Nav;
 
     private Vector3 Target;
-    //private bool MoveCheck;
+    private bool MoveCheck;
 
     private void Awake()
     {
-        //Anim = GetComponent<Animator>();
+        Anim = GetComponent<Animator>();
         Nav = GetComponent<NavMeshAgent>();
     }
     void Start()
     {
-        //isRun = false;
+        isRun = false;
         Target = new Vector3(.0f, .0f, .0f);
-        //MoveCheck = false;
+        MoveCheck = false;
     }
 
     void Update()
     {
-        /*
+        
         float Hor = Input.GetAxis("Horizontal");
         float Ver = Input.GetAxisRaw("Vertical");
 
@@ -49,21 +49,22 @@ public class TestMove : MonoBehaviour
         transform.Translate(0.0f, 0.0f, Ver * Time.deltaTime * 2.0f);
 
         transform.Rotate(0.0f, Hor * 1.5f, 0.0f);
-      */
+      
 
-        if(Input.GetMouseButton(1))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RayPoint(ray);
 
-            transform.rotation = Quaternion.LookRotation(Direction);
-            //MoveCheck = true;
-        }
+        //if(Input.GetMouseButton(1))
+        //{
+        //    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        //    RayPoint(ray);
 
-        if(Vector3.Distance(Target, transform.position) < 0.1f)
-        {
-            //MoveCheck = false;
-        }
+        //    transform.rotation = Quaternion.LookRotation(Direction);
+        //    //MoveCheck = true;
+        //}
+
+        //if(Vector3.Distance(Target, transform.position) < 0.1f)
+        //{
+        //    MoveCheck = false;
+        //}
 
         //Anim.SetBool("Move", MoveCheck);
     }
