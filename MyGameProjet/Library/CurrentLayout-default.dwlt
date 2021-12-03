@@ -71,8 +71,8 @@ MonoBehaviour:
     y: 0
     width: 1050
     height: 810
-  m_MinSize: {x: 202, y: 421}
-  m_MaxSize: {x: 4002, y: 8021}
+  m_MinSize: {x: 202, y: 442}
+  m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
   controlID: 188
 --- !u!114 &4
@@ -123,8 +123,8 @@ MonoBehaviour:
     y: 30
     width: 1904
     height: 931
-  m_MinSize: {x: 911, y: 521}
-  m_MaxSize: {x: 22006, y: 12021}
+  m_MinSize: {x: 911, y: 563}
+  m_MaxSize: {x: 22006, y: 12063}
   vertical: 0
   controlID: 124
 --- !u!114 &6
@@ -198,8 +198,8 @@ MonoBehaviour:
     y: 810
     width: 1396
     height: 121
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -300,10 +300,10 @@ MonoBehaviour:
     y: 0
     width: 1396
     height: 931
-  m_MinSize: {x: 403, y: 521}
-  m_MaxSize: {x: 8003, y: 12021}
+  m_MinSize: {x: 403, y: 563}
+  m_MaxSize: {x: 8003, y: 12063}
   vertical: 1
-  controlID: 186
+  controlID: 150
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -325,10 +325,10 @@ MonoBehaviour:
     y: 0
     width: 1396
     height: 810
-  m_MinSize: {x: 403, y: 421}
-  m_MaxSize: {x: 8003, y: 8021}
+  m_MinSize: {x: 403, y: 442}
+  m_MaxSize: {x: 8003, y: 8042}
   vertical: 0
-  controlID: 187
+  controlID: 151
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -348,8 +348,8 @@ MonoBehaviour:
     y: 0
     width: 1050
     height: 589
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -497,22 +497,21 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders:
-    - Assets/Scripts/Tmp
+    m_Folders: []
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: "C:\\Users\\SGA\\Desktop\\\uAD6D\uAE30\\Git\\JungHuiJeong_Unity\\MyGameProjet"
+  m_LastProjectPath: E:\dataDownload\Github\JungHuiJeong_Unity\MyGameProjet
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 18600000
     m_LastClickedID: 24600
-    m_ExpandedIDs: 0000000074260000d8280000c05f0000c25f0000c45f0000c65f0000c85f0000ca5f0000cc5f0000ce5f0000d05f0000d25f0000d45f0000d65f0000d85f0000da5f0000dc5f0000de5f0000e05f0000e25f0000e45f0000e65f0000e85f0000ea5f0000ec5f0000ee5f0000f05f0000f25f0000f45f0000f65f0000
+    m_ExpandedIDs: 00000000d83e0000da3e0000dc3e0000de3e0000e03e0000e23e0000e43e0000e63e0000e83e0000ea3e0000ec3e0000ee3e0000f03e0000f23e0000f43e0000f63e0000f83e0000fa3e0000fc3e0000fe3e0000003f0000023f0000043f0000063f0000083f00000a3f00000c3f00000e3f0000103f0000123f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -540,7 +539,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 368}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff0000000074260000d8280000c05f0000c25f0000c45f0000c65f0000c85f0000ca5f0000cc5f0000ce5f0000d05f0000d25f0000d45f0000d65f0000d85f0000da5f0000dc5f0000de5f0000e05f0000e25f0000e45f0000e65f0000e85f0000ea5f0000ec5f0000ee5f0000f05f0000f25f0000f45f0000f65f0000
+    m_ExpandedIDs: ffffffff00000000d83e0000da3e0000dc3e0000de3e0000e03e0000e23e0000e43e0000e63e0000e83e0000ea3e0000ec3e0000ee3e0000f03e0000f23e0000f43e0000f63e0000f83e0000fa3e0000fc3e0000fe3e0000003f0000023f0000043f0000063f0000083f00000a3f00000c3f00000e3f0000103f0000123f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -663,7 +662,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 10e7ffff
+      m_ExpandedIDs: 52fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -774,7 +773,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.31175408, y: -0.08338002, z: 0.02747475, w: -0.9461011}
     speed: 2
-    m_Value: {x: -0.31029242, y: -0.084840685, z: 0.02781505, w: -0.94643915}
+    m_Value: {x: -0.31175408, y: -0.08338002, z: 0.027474748, w: -0.94610107}
   m_Size:
     m_Target: 13.030281
     speed: 2
